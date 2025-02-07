@@ -41,6 +41,11 @@ async function updateTaskStatus(taskId, taskTitle, taskDescription, taskIsComple
 
 // Function for the onclick event for delete task button
 async function deleteTask(taskId) {
+    const confirmDelete = confirm("Are you sure you want to delete this task?");
+    if (!confirmDelete) {
+        return;
+    }
+
     // Perform the DELETE request to delete the task
     try {
         const response = await fetch(`http://localhost:3000/api/tasks/${taskId}`, {
@@ -105,7 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     <h2>${task.title}</h2>
                     <p>Task ID: ${task.id}</p>
                     <p>${task.description}</p>
-                    <p>${task.isCompleted}</p>
                     <p>${new Date(task.created_at).toLocaleString()}</p>
                     <button class=updateStatusButton data-task-id=${task.id}>${task.isCompleted ? "Mark as Incomplete" : "Mark as Completed"}</button>
                     <button class=deleteTaskButton data-task-id=${task.id}>Delete Task</button>
