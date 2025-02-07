@@ -1,4 +1,4 @@
-import "../styles/list.scss";
+import "../scss/list.scss";
 
 console.log("list of card script loaded.");
 

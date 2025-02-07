@@ -1,13 +1,14 @@
+// webpack.config.js
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: "./public/scripts/main.js",
-    card: "./public/scripts/card.js",
-    edit_card: "./public/scripts/edit_card.js",
-    list: "./public/scripts/list.js",
+    main: "./app/scripts/main.js",
+    card: "./app/scripts/card.js",
+    edit_card: "./app/scripts/edit_card.js",
+    list: "./app/scripts/list.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -21,14 +22,6 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           "css-loader",
           "sass-loader",
-          {
-            loader: "sass-loader",
-            options: {
-              sassOptions: {
-                quietDeps: true,
-              },
-            },
-          },
         ],
       },
       {
@@ -43,33 +36,31 @@ module.exports = {
       filename: "styles/[name].css",
     }),
     new HtmlWebpackPlugin({
-      template: "public/index.html",
+      template: "app/index.html",
       chunks: ["main"],
       filename: "index.html",
-      favicon: "public/images/favicon-16x16.png",
     }),
     new HtmlWebpackPlugin({
-      template: "public/list.html",
+      template: "app/list.html",
       chunks: ["list"],
       filename: "list.html",
-      favicon: "public/images/favicon-16x16.png",
     }),
     new HtmlWebpackPlugin({
-      template: "public/card.html",
+      template: "app/card.html",
       chunks: ["card"],
       filename: "card.html",
     }),
     new HtmlWebpackPlugin({
-      template: "public/edit_card.html",
+      template: "app/edit_card.html",
       chunks: ["edit_card"],
       filename: "edit_card.html",
     }),
   ],
   devServer: {
     static: "./dist",
-    port: 8080, // ✅ Webpack Dev Server will run on port 3000
+    port: 8080,
     hot: true,
-    open: true, // Auto open browser
+    open: true,
     historyApiFallback: true,
   },
 };

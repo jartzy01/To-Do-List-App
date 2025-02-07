@@ -1,4 +1,4 @@
-import "../styles/main.scss";
+import "../scss/main.scss";
 
 document.addEventListener("DOMContentLoaded", () => {
     const titleInput = document.getElementById("taskTitle");
