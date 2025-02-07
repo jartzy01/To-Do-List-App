@@ -12,6 +12,26 @@
         <div id="tasksList"></div>
     </div>
 
+    <!-- Modal Overlay -->
+<div id="editModalOverlay" class="modal-overlay"></div>
+
+<!-- Edit Task Modal -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <h1>Edit Task</h1>
+        <form id="editTaskForm">
+            <input type="hidden" id="taskId">
+            <label for="taskTitle">Title:</label>
+            <input type="text" id="taskTitle" name="title" required>
+            <label for="taskDescription">Description:</label>
+            <textarea id="taskDescription" name="description" required></textarea>
+            <label for="taskCompleted">Completed:</label>
+            <input type="checkbox" id="taskCompleted" name="isCompleted">
+            <button type="button" id="saveTask">Save Changes</button>
+        </form>
+    </div>
+</div>
+
     <script src="scripts/list.js"></script>
 </body>
 </html>
