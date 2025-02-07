@@ -1,0 +1,11 @@
+.task-list {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+#tasksList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}

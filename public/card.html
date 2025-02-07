@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card</title>
+    <title>Task Details</title>
     <link rel="stylesheet" href="styles/main.css">
-</html>
-<body>
-    <h1>How one card will be looked like?</h1>
+</head>
+<body onload="fetchTaskDetails()">
+    <div class="task-card">
+        <h1 id="taskTitle">Task Title</h1>
+        <p id="taskDescription">Task Description</p>
+        <p id="taskStatus">Completion Status</p>
+        <p id="taskCreatedAt">Created At</p>
+        <button onclick="editTask()">Edit Task</button>
+        <button onclick="deleteTask()">Delete Task</button>
+    </div>
+
+    <script src="scripts/card.js"></script>
 </body>
+</html>
