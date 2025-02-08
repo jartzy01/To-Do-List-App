@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("📤 Sending Request:", { title, description });
 
         try {
-            const response = await fetch("http://localhost:3000/api/tasks", {
+            const response = await fetch("/api/tasks", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

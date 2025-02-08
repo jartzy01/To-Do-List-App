@@ -17,9 +17,9 @@ app.use(express.static('public'));
 // Configure MariaDB connection using your updated credentials
 const dbConfig = {
   host: '127.0.0.1',
-  user: process.env.MARIADB_USER || 'to-do-user',
-  password: process.env.MARIADB_PASSWORD || '654321',
-  database: process.env.MARIADB_DATABASE || 'to-do-db',
+  user: process.env.MARIADB_USER,
+  password: process.env.MARIADB_PASSWORD,
+  database: process.env.MARIADB_DATABASE,
 };
 
 // Initialize the database by creating the "tasks" table if it does not exist.
@@ -138,6 +138,7 @@ app.delete("/api/tasks/:id", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server is running on http://localhost:${PORT}`);
-});
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`🚀 Server is running on http://0.0.0.0:${PORT}`);
+  });
+  

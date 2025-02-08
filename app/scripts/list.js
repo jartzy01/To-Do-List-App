@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Function to update task status dynamically
 async function updateTaskStatus(taskId, button) {
     try {
-        const response = await fetch(`http://localhost:3000/api/tasks/${taskId}`);
+        const response = await fetch(`/api/tasks/${taskId}`);
         if (!response.ok) throw new Error("Failed to fetch task");
 
         const task = await response.json();
@@ -28,7 +28,7 @@ async function updateTaskStatus(taskId, button) {
             isCompleted: task.isCompleted === 1 ? 0 : 1
         };
 
-        const updateResponse = await fetch(`http://localhost:3000/api/tasks/${taskId}`, {
+        const updateResponse = await fetch(`/api/tasks/${taskId}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updatedTask)
@@ -50,7 +50,7 @@ async function deleteTask(taskId) {
     if (!confirm("Are you sure you want to delete this task?")) return;
 
     try {
-        const response = await fetch(`http://localhost:3000/api/tasks/${taskId}`, {
+        const response = await fetch(`/api/tasks/${taskId}`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" }
         });
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const tasksListContainer = document.getElementById("tasksList");
 
     try {
-        const response = await fetch("http://localhost:3000/api/tasks");
+        const response = await fetch("/api/tasks");
         if (!response.ok) throw new Error("Failed to fetch tasks");
 
         const tasks = await response.json();
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const updatedDescription = document.getElementById("taskDescription").value;
             const updatedCompleted = document.getElementById("taskCompleted").checked ? 1 : 0;
 
-            const updateResponse = await fetch(`http://localhost:3000/api/tasks/${taskId}`, {
+            const updateResponse = await fetch(`/api/tasks/${taskId}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ title: updatedTitle, description: updatedDescription, isCompleted: updatedCompleted })
